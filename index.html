@@ -15,139 +15,92 @@
         .status-off { background-color: #f1f5f9; color: #94a3b8; }
         .timeline-row:hover { background-color: #f1f5f9; transition: background 0.2s; }
         
-        /* 모바일 최적화: 가로 스크롤 시 시간 컬럼 고정 효과(선택 사항) */
-        @media (max-width: 640px) {
-            .sticky-col {
-                position: sticky;
-                left: 0;
-                background-color: #f8fafc;
-                z-index: 10;
-                border-right: 1px solid #e2e8f0;
-            }
-            .timeline-row:hover .sticky-col {
-                background-color: #f1f5f9;
-            }
+        /* 초소형 화면 대응 (iPhone SE 등) */
+        @media (max-width: 380px) {
+            .compact-text { font-size: 9px !important; }
+            .compact-padding { padding-left: 0.25rem !important; padding-right: 0.25rem !important; }
         }
     </style>
 </head>
 <body class="p-2 sm:p-4 md:p-8">
     <div class="max-w-5xl mx-auto">
         <!-- Header -->
-        <header class="mb-6 sm:mb-10 text-center">
-            <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">
+        <header class="mb-4 sm:mb-10 text-center">
+            <h1 class="text-xl sm:text-3xl font-bold text-slate-800 mb-1">
                 <i class="fa-solid fa-calendar-check text-indigo-600 mr-2"></i>4/12(일) 전시 해설 배치표
             </h1>
         </header>
 
         <!-- Summary Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 mb-6">
             <!-- 김정영 (Instructor A) -->
-            <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-base sm:text-lg font-bold text-slate-700">김정영 <span class="text-xs font-normal text-slate-400">강사</span></span>
-                    <span class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded bg-slate-100 text-slate-600">10:00 - 17:00</span>
+            <div class="bg-white p-3 sm:p-5 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm sm:text-lg font-bold text-slate-700">김정영 <span class="text-[10px] font-normal text-slate-400">강사</span></span>
+                    <span class="px-1.5 py-0.5 text-[9px] sm:text-xs font-semibold rounded bg-slate-100 text-slate-600">10:00-17:00</span>
                 </div>
-                <div class="space-y-1.5 text-xs sm:text-sm">
-                    <div class="flex justify-between">
-                        <span class="text-slate-400">식사 / 휴게</span>
-                        <span class="font-semibold text-slate-700">1h / 0.5h</span>
-                    </div>
-                    <div class="flex justify-between border-t pt-2 mt-2 font-bold text-indigo-600">
-                        <span>근무시간/휴게</span>
-                        <span>6.0h</span>
-                    </div>
+                <div class="flex justify-between items-end">
+                    <div class="text-[10px] sm:text-sm text-slate-400">식사 1h / 휴게 0.5h</div>
+                    <div class="text-xs sm:text-base font-bold text-indigo-600">6.0h</div>
                 </div>
             </div>
 
             <!-- 최윤정 (Instructor B) -->
-            <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-base sm:text-lg font-bold text-slate-700">최윤정 <span class="text-xs font-normal text-slate-400">강사</span></span>
-                    <span class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded bg-slate-100 text-slate-600">10:00 - 17:00</span>
+            <div class="bg-white p-3 sm:p-5 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm sm:text-lg font-bold text-slate-700">최윤정 <span class="text-[10px] font-normal text-slate-400">강사</span></span>
+                    <span class="px-1.5 py-0.5 text-[9px] sm:text-xs font-semibold rounded bg-slate-100 text-slate-600">10:00-17:00</span>
                 </div>
-                <div class="space-y-1.5 text-xs sm:text-sm">
-                    <div class="flex justify-between">
-                        <span class="text-slate-400">식사 / 휴게</span>
-                        <span class="font-semibold text-slate-700">1h / 0.5h</span>
-                    </div>
-                    <div class="flex justify-between border-t pt-2 mt-2 font-bold text-indigo-600">
-                        <span>근무시간/휴게</span>
-                        <span>6.0h</span>
-                    </div>
+                <div class="flex justify-between items-end">
+                    <div class="text-[10px] sm:text-sm text-slate-400">식사 1h / 휴게 0.5h</div>
+                    <div class="text-xs sm:text-base font-bold text-indigo-600">6.0h</div>
                 </div>
             </div>
 
             <!-- 이성전 (Instructor C) -->
-            <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border-2 border-indigo-500 ring-2 ring-indigo-50 ring-offset-1 sm:ring-offset-2">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-base sm:text-lg font-bold text-indigo-700">이성전 <span class="text-xs font-normal text-slate-400">강사</span></span>
-                    <span class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded bg-indigo-100 text-indigo-600">12:30 - 17:00</span>
+            <div class="bg-white p-3 sm:p-5 rounded-xl shadow-sm border-2 border-indigo-500 ring-2 ring-indigo-50">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm sm:text-lg font-bold text-indigo-700">이성전 <span class="text-[10px] font-normal text-slate-400">강사</span></span>
+                    <span class="px-1.5 py-0.5 text-[9px] sm:text-xs font-semibold rounded bg-indigo-100 text-indigo-600">12:30-17:00</span>
                 </div>
-                <div class="space-y-1.5 text-xs sm:text-sm">
-                    <div class="flex justify-between">
-                        <span class="text-slate-400">휴게</span>
-                        <span class="font-semibold text-indigo-600">0.5h</span>
-                    </div>
-                    <div class="flex justify-between border-t pt-2 mt-2 font-bold text-indigo-700">
-                        <span>근무시간/휴게</span>
-                        <span>4.0h</span>
-                    </div>
+                <div class="flex justify-between items-end">
+                    <div class="text-[10px] sm:text-sm text-slate-400">휴게 0.5h</div>
+                    <div class="text-xs sm:text-base font-bold text-indigo-700">4.0h</div>
                 </div>
             </div>
         </div>
 
         <!-- Main Timeline Table -->
-        <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full border-collapse text-left min-w-[500px] sm:min-w-0">
-                    <thead class="bg-slate-50 border-b border-slate-200 text-[11px] sm:text-sm">
-                        <tr>
-                            <th class="p-3 sm:p-4 font-bold text-slate-600 w-28 sm:w-32">시간대</th>
-                            <th class="p-3 sm:p-4 font-bold text-slate-600 text-center">김정영</th>
-                            <th class="p-3 sm:p-4 font-bold text-slate-600 text-center">최윤정</th>
-                            <th class="p-3 sm:p-4 font-bold text-indigo-600 text-center">이성전</th>
-                            <th class="p-3 sm:p-4 font-bold text-slate-600 text-center">상주</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 text-[11px] sm:text-sm" id="scheduleBody">
-                    </tbody>
-                </table>
-            </div>
+        <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+            <table class="w-full border-collapse text-left table-fixed">
+                <thead class="bg-slate-50 border-b border-slate-200 text-[10px] sm:text-sm">
+                    <tr>
+                        <th class="p-2 sm:p-4 font-bold text-slate-600 w-[26%] sm:w-32">시간대</th>
+                        <th class="p-1 sm:p-4 font-bold text-slate-600 text-center">김정영</th>
+                        <th class="p-1 sm:p-4 font-bold text-slate-600 text-center">최윤정</th>
+                        <th class="p-1 sm:p-4 font-bold text-indigo-600 text-center">이성전</th>
+                        <th class="p-1 sm:p-4 font-bold text-slate-600 text-center w-[12%] sm:w-16">상주</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-[10px] sm:text-sm" id="scheduleBody">
+                </tbody>
+            </table>
         </div>
 
         <!-- Info Grid -->
-        <div class="mt-6 sm:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            <div class="bg-indigo-50 p-4 sm:p-6 rounded-2xl border border-indigo-100">
-                <h3 class="font-bold text-indigo-800 mb-3 text-sm sm:text-base"><i class="fa-solid fa-clock mr-2 text-xs sm:text-sm"></i>운영 및 시간 산정 기준</h3>
-                <ul class="text-xs sm:text-sm text-indigo-700 space-y-1.5">
-                    <li>• <strong>근무시간/휴게:</strong> 업무 수행과 0.5h 휴게 포함 시간입니다.</li>
-                    <li>• <strong>식사:</strong> 12:30~14:30 사이 교대 식사 1h은 제외됩니다.</li>
-                    <li>• <strong>상주 원칙:</strong> 휴게 중에도 최소 2인 이상 상주를 관리합니다.</li>
+        <div class="mt-4 sm:mt-8 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6">
+            <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                <h3 class="font-bold text-indigo-800 mb-2 text-xs sm:text-base"><i class="fa-solid fa-clock mr-2"></i>운영 기준</h3>
+                <ul class="text-[10px] sm:text-sm text-indigo-700 space-y-1">
+                    <li>• <strong>근무시간/휴게:</strong> 업무 및 0.5h 휴게 포함 시간</li>
+                    <li>• <strong>식사:</strong> 12:30~14:30 사이 교대 식사 1h 제외</li>
                 </ul>
             </div>
-            <div class="bg-slate-50 p-4 sm:p-6 rounded-2xl border border-slate-200">
-                <h3 class="font-bold text-slate-800 mb-3 text-sm sm:text-base"><i class="fa-solid fa-clock-rotate-left mr-2 text-xs sm:text-sm"></i>교대 상세 일정</h3>
-                <div class="flex flex-col gap-2">
-                    <div class="flex items-center text-[11px] sm:text-sm">
-                        <span class="w-24 sm:w-32 font-semibold text-slate-600">12:30 - 13:30</span>
-                        <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-700">김정영 식사 (1h)</span>
-                    </div>
-                    <div class="flex items-center text-[11px] sm:text-sm">
-                        <span class="w-24 sm:w-32 font-semibold text-slate-600">13:30 - 14:30</span>
-                        <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-700">최윤정 식사 (1h)</span>
-                    </div>
-                    <div class="flex items-center text-[11px] sm:text-sm pt-1 border-t mt-1">
-                        <span class="w-24 sm:w-32 font-semibold text-slate-600">15:00 - 15:30</span>
-                        <span class="px-2 py-0.5 rounded bg-yellow-100 text-yellow-700 font-bold">이성전 휴게 (0.5h)</span>
-                    </div>
-                    <div class="flex items-center text-[11px] sm:text-sm">
-                        <span class="w-24 sm:w-32 font-semibold text-slate-600">15:30 - 16:00</span>
-                        <span class="px-2 py-0.5 rounded bg-yellow-100 text-yellow-700 font-bold">김정영 휴게 (0.5h)</span>
-                    </div>
-                    <div class="flex items-center text-[11px] sm:text-sm">
-                        <span class="w-24 sm:w-32 font-semibold text-slate-600">16:00 - 16:30</span>
-                        <span class="px-2 py-0.5 rounded bg-yellow-100 text-yellow-700 font-bold">최윤정 휴게 (0.5h)</span>
-                    </div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <h3 class="font-bold text-slate-800 mb-2 text-xs sm:text-base"><i class="fa-solid fa-clock-rotate-left mr-2"></i>교대 상세 일정</h3>
+                <div class="space-y-1 text-[10px] sm:text-sm">
+                    <div class="flex items-center"><span class="w-20 sm:w-32 font-semibold">12:30-14:30</span><span class="text-blue-600">A, B 순차 식사</span></div>
+                    <div class="flex items-center"><span class="w-20 sm:w-32 font-semibold">15:00-16:30</span><span class="text-amber-600">C-A-B 순차 휴게</span></div>
                 </div>
             </div>
         </div>
@@ -155,15 +108,15 @@
 
     <script>
         const scheduleData = [
-            { time: "10:00 ~ 11:30", a: "work", b: "work", c: "off", count: "2명" },
-            { time: "11:30 ~ 12:30", a: "work", b: "work", c: "off", count: "2명" },
-            { time: "12:30 ~ 13:30", a: "lunch", b: "work", c: "work", count: "2명" },
-            { time: "13:30 ~ 14:30", a: "work", b: "lunch", c: "work", count: "2명" },
-            { time: "14:30 ~ 15:00", a: "work", b: "work", c: "work", count: "3명" },
-            { time: "15:00 ~ 15:30", a: "work", b: "work", c: "break", count: "2명" },
-            { time: "15:30 ~ 16:00", a: "break", b: "work", c: "work", count: "2명" },
-            { time: "16:00 ~ 16:30", a: "work", b: "break", c: "work", count: "2명" },
-            { time: "16:30 ~ 17:00", a: "work", b: "work", c: "work", count: "3명" }
+            { time: "10:00~11:30", a: "work", b: "work", c: "off", count: "2" },
+            { time: "11:30~12:30", a: "work", b: "work", c: "off", count: "2" },
+            { time: "12:30~13:30", a: "lunch", b: "work", c: "work", count: "2" },
+            { time: "13:30~14:30", a: "work", b: "lunch", c: "work", count: "2" },
+            { time: "14:30~15:00", a: "work", b: "work", c: "work", count: "3" },
+            { time: "15:00~15:30", a: "work", b: "work", c: "break", count: "2" },
+            { time: "15:30~16:00", a: "break", b: "work", c: "work", count: "2" },
+            { time: "16:00~16:30", a: "work", b: "break", c: "work", count: "2" },
+            { time: "16:30~17:00", a: "work", b: "work", c: "work", count: "3" }
         ];
 
         function getStatusClass(status) {
@@ -191,14 +144,14 @@
             const tr = document.createElement('tr');
             tr.className = 'timeline-row';
             
-            const isThree = row.count === "3명" ? "font-bold text-indigo-600 bg-indigo-50/50" : "text-slate-600";
+            const isThree = row.count === "3" ? "font-bold text-indigo-600 bg-indigo-50/50" : "text-slate-600";
             
             tr.innerHTML = `
-                <td class="p-3 sm:p-4 font-medium text-slate-500 border-r border-slate-50 whitespace-nowrap">${row.time}</td>
-                <td class="p-3 sm:p-4 text-center"><span class="px-2 sm:px-3 py-1 rounded-lg font-bold ${getStatusClass(row.a)}">${getStatusText(row.a)}</span></td>
-                <td class="p-3 sm:p-4 text-center"><span class="px-2 sm:px-3 py-1 rounded-lg font-bold ${getStatusClass(row.b)}">${getStatusText(row.b)}</span></td>
-                <td class="p-3 sm:p-4 text-center"><span class="px-2 sm:px-3 py-1 rounded-lg font-bold ${getStatusClass(row.c)}">${getStatusText(row.c)}</span></td>
-                <td class="p-3 sm:p-4 text-center font-bold ${isThree}">${row.count}</td>
+                <td class="p-2 sm:p-4 font-medium text-slate-500 border-r border-slate-50 whitespace-nowrap compact-padding">${row.time}</td>
+                <td class="p-1 sm:p-4 text-center compact-padding"><span class="inline-block w-full sm:w-auto px-1 sm:px-3 py-1 rounded-lg font-bold compact-text ${getStatusClass(row.a)}">${getStatusText(row.a)}</span></td>
+                <td class="p-1 sm:p-4 text-center compact-padding"><span class="inline-block w-full sm:w-auto px-1 sm:px-3 py-1 rounded-lg font-bold compact-text ${getStatusClass(row.b)}">${getStatusText(row.b)}</span></td>
+                <td class="p-1 sm:p-4 text-center compact-padding"><span class="inline-block w-full sm:w-auto px-1 sm:px-3 py-1 rounded-lg font-bold compact-text ${getStatusClass(row.c)}">${getStatusText(row.c)}</span></td>
+                <td class="p-1 sm:p-4 text-center font-bold compact-padding ${isThree}">${row.count}</td>
             `;
             tbody.appendChild(tr);
         });
