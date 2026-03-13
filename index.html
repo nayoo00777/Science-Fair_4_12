@@ -64,7 +64,7 @@
                     <span class="px-1.5 py-0.5 text-[9px] sm:text-xs font-semibold rounded bg-indigo-100 text-indigo-600">12:30-17:00</span>
                 </div>
                 <div class="flex justify-between items-end">
-                    <div class="text-[10px] sm:text-sm text-slate-400">휴게 0.5h</div>
+                    <div class="text-[10px] sm:text-sm text-slate-400">식사 1h / 휴게 0.5h</div>
                     <div class="text-xs sm:text-base font-bold text-indigo-700">4.0h</div>
                 </div>
             </div>
@@ -93,14 +93,16 @@
                 <h3 class="font-bold text-indigo-800 mb-2 text-xs sm:text-base"><i class="fa-solid fa-clock mr-2"></i>운영 기준</h3>
                 <ul class="text-[10px] sm:text-sm text-indigo-700 space-y-1">
                     <li>• <strong>근무시간/휴게:</strong> 업무 및 0.5h 휴게 포함 시간</li>
-                    <li>• <strong>식사:</strong> 12:30~14:30 사이 교대 식사 1h 제외</li>
+                    <li>• <strong>식사:</strong> 12:30~13:30 전원 식사 진행 (해당 시간 전시장 비운영)</li>
                 </ul>
             </div>
             <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <h3 class="font-bold text-slate-800 mb-2 text-xs sm:text-base"><i class="fa-solid fa-clock-rotate-left mr-2"></i>교대 상세 일정</h3>
+                <h3 class="font-bold text-slate-800 mb-2 text-xs sm:text-base"><i class="fa-solid fa-clock-rotate-left mr-2"></i>상세 일정</h3>
                 <div class="space-y-1 text-[10px] sm:text-sm">
-                    <div class="flex items-center"><span class="w-20 sm:w-32 font-semibold">12:30-14:30</span><span class="text-blue-600">김정영, 최윤정 순차 식사</span></div>
-                    <div class="flex items-center"><span class="w-20 sm:w-32 font-semibold">15:00-16:30</span><span class="text-amber-600">이성전-김정영-최윤정 순차 휴게</span></div>
+                    <div class="flex items-center"><span class="w-20 sm:w-32 font-semibold text-blue-600">12:30-13:30</span><span>전 강사 동시 식사</span></div>
+                    <div class="flex items-center border-t mt-1 pt-1"><span class="w-20 sm:w-32 font-semibold">15:00-15:30</span><span>최윤정 휴게</span></div>
+                    <div class="flex items-center"><span class="w-20 sm:w-32 font-semibold">15:30-16:00</span><span>김정영 휴게</span></div>
+                    <div class="flex items-center"><span class="w-20 sm:w-32 font-semibold">16:00-16:30</span><span>이성전 휴게</span></div>
                 </div>
             </div>
         </div>
@@ -110,12 +112,12 @@
         const scheduleData = [
             { time: "10:00~11:30", a: "work", b: "work", c: "off", count: "2" },
             { time: "11:30~12:30", a: "work", b: "work", c: "off", count: "2" },
-            { time: "12:30~13:30", a: "lunch", b: "work", c: "work", count: "2" },
-            { time: "13:30~14:30", a: "work", b: "lunch", c: "work", count: "2" },
+            { time: "12:30~13:30", a: "lunch", b: "lunch", c: "lunch", count: "0" },
+            { time: "13:30~14:30", a: "work", b: "work", c: "work", count: "3" },
             { time: "14:30~15:00", a: "work", b: "work", c: "work", count: "3" },
-            { time: "15:00~15:30", a: "work", b: "work", c: "break", count: "2" },
+            { time: "15:00~15:30", a: "work", b: "break", c: "work", count: "2" },
             { time: "15:30~16:00", a: "break", b: "work", c: "work", count: "2" },
-            { time: "16:00~16:30", a: "work", b: "break", c: "work", count: "2" },
+            { time: "16:00~16:30", a: "work", b: "work", c: "break", count: "2" },
             { time: "16:30~17:00", a: "work", b: "work", c: "work", count: "3" }
         ];
 
@@ -144,17 +146,21 @@
             const tr = document.createElement('tr');
             tr.className = 'timeline-row';
             
-            const isThree = row.count === "3" ? "font-bold text-indigo-600 bg-indigo-50/50" : "text-slate-600";
+            const countValue = parseInt(row.count);
+            let countStyle = "text-slate-600";
+            if (countValue >= 3) countStyle = "font-bold text-indigo-600 bg-indigo-50/50";
+            if (countValue === 0) countStyle = "font-bold text-red-500 bg-red-50";
             
             tr.innerHTML = `
                 <td class="p-2 sm:p-4 font-medium text-slate-500 border-r border-slate-50 whitespace-nowrap compact-padding">${row.time}</td>
                 <td class="p-1 sm:p-4 text-center compact-padding"><span class="inline-block w-full sm:w-auto px-1 sm:px-3 py-1 rounded-lg font-bold compact-text ${getStatusClass(row.a)}">${getStatusText(row.a)}</span></td>
                 <td class="p-1 sm:p-4 text-center compact-padding"><span class="inline-block w-full sm:w-auto px-1 sm:px-3 py-1 rounded-lg font-bold compact-text ${getStatusClass(row.b)}">${getStatusText(row.b)}</span></td>
                 <td class="p-1 sm:p-4 text-center compact-padding"><span class="inline-block w-full sm:w-auto px-1 sm:px-3 py-1 rounded-lg font-bold compact-text ${getStatusClass(row.c)}">${getStatusText(row.c)}</span></td>
-                <td class="p-1 sm:p-4 text-center font-bold compact-padding ${isThree}">${row.count}</td>
+                <td class="p-1 sm:p-4 text-center font-bold compact-padding ${countStyle}">${row.count}</td>
             `;
             tbody.appendChild(tr);
         });
     </script>
 </body>
 </html>
+
